@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
-
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        
-        $customers = Customer::paginate(10);
+        if ($request->filled('search')) {
+            $customers = Customer::search($request->search)->get();
+        }else{
+            $customers = Customer::get();
+        }
+       
         return view('customer.index', compact('customers'));
     }
 

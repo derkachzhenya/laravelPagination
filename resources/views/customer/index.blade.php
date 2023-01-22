@@ -15,7 +15,16 @@
         <h1>Customer</h1>
         <div class="card">
             <div class="card_header">
+                <div class="container mt-3 col-3">
+                    <form method='get'>
+                        <div class="input-group mb-3">
+<input type="text" name="search" value="{{request()->get('search')}}" class="form-control" placeholder="Search...">
+<button class="btn btn-success" type="submit">Search</button>
 
+                        </div>
+
+                    </form>
+                </div>
             </div>
             <div class="card_body">
                 <table class='table table-bordered table-striped table-hover'>
@@ -48,7 +57,7 @@
             </div>
 
             <div class="card_footer">
-                <div class="container">{{ $customers->links() }}</div>
+                <div class="container"></div>
 
             </div>
         </div>
